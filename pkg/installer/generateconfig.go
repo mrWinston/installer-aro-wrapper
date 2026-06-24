@@ -115,7 +115,7 @@ func (m *manager) generateInstallConfig(ctx context.Context) (*installconfig.Ins
 	var controlPlaneZones, workerZones []string
 
 	// centraluseuap reports one zone, so we need to perform a non-zonal install in that region
-	if strings.EqualFold(m.oc.Location, "centraluseuap") {
+	if strings.EqualFold(m.oc.Location, "westeurope") {
 		workerZones = []string{}
 		controlPlaneZones = []string{}
 	} else {

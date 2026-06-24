@@ -5,6 +5,7 @@ package installer
 
 import (
 	"context"
+	"encoding/json"
 	"reflect"
 	"time"
 
@@ -79,7 +80,8 @@ func (m *manager) deployResourceTemplate(ctx context.Context) error {
 			m.computeMasterVMs(installConfig, zones(installConfig), machineMaster),
 		},
 	}
-
+	armMarsh, _ := json.Marshal(t)
+	m.log.Warnf("Full Installer Arm JSON: %s", string(armMarsh))
 	return arm.DeployTemplate(ctx, m.log, m.deployments, resourceGroup, "resources", t, params)
 }
 
